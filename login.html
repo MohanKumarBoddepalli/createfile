@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .stylecalss {
+            width: 80%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        pre {
+            display: inline-flex;
+            font-size: 20px;
+            background-color: rgb(225, 228, 225);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <form method='POST' action="http://localhost:3000/welcome">
+            <label for="username">First name:</label>
+            <input type="text" name="username" value="mohan" placeholder="User Name"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" value="kumar" placeholder="Password"><br><br>
+            <label for="value">Bat file count start from:</label>
+            <input type="number" name="value" value=0 placeholder="startnumber"><br><br>
+            <label for="filename">Folder Name:</label>
+            <input type="text" name="filename" value=MWL placeholder="filename"><br><br>
+            <label for="content">Bat file content:</label>
+            <input type="text" name="content" class="stylecalss" size="200" width="200"
+                value="cmd.exe --log-level info --main 123 --call 123 --propose-little --123 --key  value=${arr[i]}  lab1-internal.exacloud.io 4104\npause.."
+                placeholder="bat content"><br><br>
+            <input type="submit" value="Submit">
+
+        </form>
+    </div>
+    <div>
+        <label for="inputfile">check filen.txt content before creating: --  need to work on please add files in filesn.txt</label>
+        <input type="file" src="/filen.txt" accept=".txt" name="inputfile" id="inputfile">
+    </div>
+    <div>
+        <pre id="output"></pre>
+    </div>
+
+    <script type="text/javascript">
+        document.getElementById('inputfile')
+            .addEventListener('change', function () {
+                var fr = new FileReader();
+                fr.onload = function () {
+                    document.getElementById('output')
+                        .textContent = fr.result;
+                }
+                fr.readAsText(this.files[0]);
+            })
+    </script>
+</body>
+
+</html>
